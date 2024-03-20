@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 728929446168550689}
   m_Layer: 0
   m_Name: Pizza
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,3 +173,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1324ed0bc52ba944cb27c8dd547bff79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isProjectile: 1
+  controller: {fileID: 0}

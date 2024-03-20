@@ -1709,6 +1709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1324ed0bc52ba944cb27c8dd547bff79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isProjectile: 0
+  controller: {fileID: 1667525208467300862, guid: 347f7bd267368af4c8080910594a9ca8, type: 3}
 --- !u!1 &7575434745421316174
 GameObject:
   m_ObjectHideFlags: 0

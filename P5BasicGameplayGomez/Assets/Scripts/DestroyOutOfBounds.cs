@@ -6,6 +6,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     private float topBound = 50.0f;
     private float lowerBound = -10;
+    private float sideBounds = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (transform.position.z < lowerBound)
+        else if (transform.position.z < lowerBound || transform.position.x > sideBounds || transform.position.x < -sideBounds)
         {
             //if animal goes past view, game over
             Debug.Log("Game Over!");
