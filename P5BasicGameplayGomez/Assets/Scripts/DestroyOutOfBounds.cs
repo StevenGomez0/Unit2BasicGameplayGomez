@@ -23,8 +23,8 @@ public class DestroyOutOfBounds : MonoBehaviour
         }
         else if (transform.position.z < lowerBound || transform.position.x > sideBounds || transform.position.x < -sideBounds)
         {
-            //if animal goes past view, game over
-            Debug.Log("Game Over!");
+            //if animal goes past view, lives -1
+            PlayerController.minusLife();
             Destroy(gameObject);
         }
     }

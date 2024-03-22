@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,13 +12,15 @@ public class PlayerController : MonoBehaviour
     private float xRange = 10;
     private float zRange = 10;
     public GameObject foodProjectile;
-    public int lives = 3;
-    public int score = 0;
+    static private float lives = 3;
+    static private float score = 0;
+    private float currentLives = lives;
+    private bool dead = false;
 
     private void Start()
     {
-        Debug.Log("Lives = " + lives);
-        Debug.Log("Score = " + score);
+        Debug.Log("Lives: " + lives);
+        Debug.Log("Score: " + score);
     }
     // Update is called once per frame
     void Update()
@@ -40,7 +43,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, -1);
         }
 
-        //horizontal movement using unity axi
+        //horizontal movement using unity axi(?) axises idk
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
         verticalInput = Input.GetAxis("Vertical");
@@ -50,29 +53,48 @@ public class PlayerController : MonoBehaviour
             //pizza shooting
             Instantiate(foodProjectile, transform.position, foodProjectile.transform.rotation);
         }
+        if (currentLives != lives)
+        {
+            //displays health, detects if game is over, if dead does not display negative lives
+            if (dead == false)
+            {
+                Debug.Log("Lives: " + lives);
+            }
+            currentLives = lives;
+            if (currentLives == 0)
+            {
+                Debug.Log("Game Over!");
+                dead = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //makes it so colliding with pizza does not take lives
+        //unrelated but i like this tag detection thing
         if (other.gameObject.tag.Equals("projectile") == true)
         {
             return;
         }
         else
         {
+            //if collision is not pizza, take a life
             lives--;
-            Debug.Log("Lives = " + lives);
-            if (lives == 0)
-            {
-                Debug.Log("Game Over!");
-            }
         }
     }
-
-    public void Score()
+    //if score is increased, display score in console
+    static public void Score()
     {
         score++;
-        Debug.Log("Score = " + score);
+        if (lives > 0)
+        {
+            Debug.Log("Score = " + score);
+        }
+    }
+    //so other scripts can influence lives
+    static public void minusLife()
+    {
+        lives--;
     }
 }
