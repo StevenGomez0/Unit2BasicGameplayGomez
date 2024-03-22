@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomAnimal()
     {
-        int spawnSide = Random.Range(0, 4);
+        int spawnSide = Random.Range(0, 3);
         //randomizes animal
         int animalIndex = Random.Range(0, animalPrefabs.Length);
         if (spawnSide == 0)

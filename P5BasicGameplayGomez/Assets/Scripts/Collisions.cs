@@ -15,6 +15,6 @@ public class Collisions : MonoBehaviour
             Destroy(gameObject);
         }
 
-                
+
     }
 }
