@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class FoodMeter : MonoBehaviour
 {
-    static public float health = 3;
+    public float health = 3;
     public RectTransform foodMeter;
-    private float currentHealth = health;
+    private float currentHealth;
     private float originalHealth;
     public GameObject parentAnimal;
 
     void Start()
     {
+        currentHealth = health;
         foodMeter = GetComponent<RectTransform>();
         originalHealth = health;
     }
